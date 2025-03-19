@@ -1,5 +1,5 @@
 {% set name = "pandas-stubs" %}
-{% set version = "2.1.4.231227" %}
+{% set version = "2.2.3.250308" %}
 
 package:
   name: {{ name|lower }}
@@ -7,24 +7,23 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/pandas_stubs-{{ version }}.tar.gz
-  sha256: 3ea29ef001e9e44985f5ebde02d4413f94891ef6ec7e5056fb07d125be796c23
+  sha256: 3a6e9daf161f00b85c83772ed3d5cff9522028f07a94817472c07b91f46710fd
 
 build:
   number: 0
-  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
   # s390x is missing types-pytz
-  skip: True  # [py<39 or s390x]
+  skip: True  # [py<310 or s390x]
+  script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
 
 requirements:
   host:
     - python
     - pip
-    - poetry-core
-    - wheel
+    - poetry-core >=1.0.0
   run:
     - python
     - types-pytz >=2022.1.1
-    - numpy >=1.26  # [py<313]
+    - numpy >=1.23.5
 
 test:
   requires:
