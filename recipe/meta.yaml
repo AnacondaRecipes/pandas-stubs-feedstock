@@ -1,5 +1,5 @@
 {% set name = "pandas-stubs" %}
-{% set version = "2.3.2.250926" %}
+{% set version = "3.0.0.260204" %}
 
 package:
   name: {{ name|lower }}
@@ -7,11 +7,11 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name.replace("-", "_")}}-{{ version }}.tar.gz
-  sha256: c64b9932760ceefb96a3222b953e6a251321a9832a28548be6506df473a66406
+  sha256: bf9294b76352effcffa9cb85edf0bed1339a7ec0c30b8e1ac3d66b4228f1fbc3
 
 build:
   number: 0
-  skip: True  # [py<310 or py>313]
+  skip: true  # [py<311]
   script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation --ignore-installed --no-cache-dir -vvv
 
 requirements:
@@ -21,7 +21,6 @@ requirements:
     - poetry-core >=1.0.0
   run:
     - python
-    - types-pytz >=2022.1.1
     - numpy >=1.23.5
 
 test:
@@ -40,8 +39,12 @@ about:
   license_family: BSD
   summary: Collection of Pandas stub files
   description: |
-    Collection of Pandas stub files supported by the pandas team
-  doc_url: https://github.com/pandas-dev/pandas-stubs # Documentation is a work-in-progress.
+    These are public type stubs for pandas, following the convention of
+    providing stubs in a separate package, as specified in PEP 561.
+    The stubs cover the most typical use cases of pandas. In general,
+    these stubs are narrower than what is possibly allowed by pandas,
+    but follow a convention of suggesting best recommended practices for using pandas.
+  doc_url: https://github.com/pandas-dev/pandas-stubs/blob/main/README.md
   dev_url: https://github.com/pandas-dev/pandas-stubs
 
 extra:
