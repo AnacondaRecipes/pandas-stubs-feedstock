@@ -1,13 +1,13 @@
 {% set name = "pandas-stubs" %}
-{% set version = "3.0.0.260204" %}
+{% set version = "3.0.3.260530" %}
 
 package:
-  name: {{ name|lower }}
+  name: {{ name }}
   version: {{ version }}
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name.replace("-", "_")}}-{{ version }}.tar.gz
-  sha256: bf9294b76352effcffa9cb85edf0bed1339a7ec0c30b8e1ac3d66b4228f1fbc3
+  sha256: d1efe47b2e5a312c047d7feabec5cb7a55365747983420077e9fcbe9ab74f714
 
 build:
   number: 0
@@ -18,7 +18,7 @@ requirements:
   host:
     - python
     - pip
-    - poetry-core >=1.0.0
+    - poetry-core >=2.0.0
   run:
     - python
     - numpy >=1.23.5
